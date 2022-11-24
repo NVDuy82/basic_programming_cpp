@@ -46,21 +46,6 @@ class Node{
       }
     }
 
-    int size(){
-      Node* temp = this->clone();
-      int cnt = 0;
-      while(temp != NULL){
-        ++cnt;
-    	temp = temp->next;
-      }
-    return cnt;
-    }
-
-    bool empty(){
-      Node* temp = this->clone();
-      return temp == NULL;
-    }
-
     void insertL(int value){
       Node* temp = this->clone();
       this->data = value;
