@@ -39,10 +39,12 @@ class Node{
       temp->next = second;
     }
 
-    void mergeAndSort(Node* second, int direction = 1){
+    void mergeAndSort(Node* second, bool reverse = false){
+      int direction =  reverse ? -1 : 1;
+      this->sort(reverse);
       while(second != NULL){
-	this->insert(second->data, direction);
-    	second = second->next;
+	      this->insert(second->data, direction);
+      	second = second->next;
       }
     }
 
@@ -62,6 +64,10 @@ class Node{
     }
 
     void insert(int value, int direction){
+      if(direction == 0){
+        this->insertR(value);
+        return;
+      }
       Node* temp = this;
       if(value*direction < temp->data*direction){
         this->insertL(value);
@@ -94,8 +100,8 @@ class Node{
       this->next = NULL;
       temp = temp->next;
       while(temp != NULL){
-	this->insert(temp->data, direction);
-    	temp = temp->next;
+	      this->insert(temp->data, direction);
+    	  temp = temp->next;
       }
     }
 
@@ -121,7 +127,7 @@ class Program{
       Node* list = new Node(data);
       for(int i = 1; i < n; ++i){
         cin >> data;
-        list->insert(data, 1);
+        list->insert(data, 0);
       }
       cout << "Danh sach vua nhap theo thu tu tang dan: \n->> ";
       Node::display(list);
