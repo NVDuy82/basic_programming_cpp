@@ -127,7 +127,7 @@ class Program{
       Node* list = new Node(data);
       for(int i = 1; i < n; ++i){
         cin >> data;
-        list->insert(data, 0);
+        list->insert(data, 1);
       }
       cout << "Danh sach vua nhap theo thu tu tang dan: \n->> ";
       Node::display(list);
