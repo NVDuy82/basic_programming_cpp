@@ -5,7 +5,7 @@ class Node{
   private:
   public:
     int data;
-  	Node *next;
+    Node *next;
 
     Node(){
       this->next = NULL;
@@ -25,10 +25,10 @@ class Node{
       Node* temp = new Node(this->data, this->next);
       Node* res = new Node(this->data);
       while(temp->next != NULL){
-    		temp = temp->next;
-		    res->insertR(temp->data);
-  	  }
-  	  return res;
+    	temp = temp->next;
+	res->insertR(temp->data);
+      }
+      return res;
     }
 
     void merge(Node* second){
@@ -39,21 +39,21 @@ class Node{
       temp->next = second;
     }
 
-    void mergeAndSort(Node* second){
+    void mergeAndSort(Node* second, int direction = 1){
       while(second != NULL){
-		    this->insert(second->data, 1);
-    		second = second->next;
-  	  }
+	this->insert(second->data, direction);
+    	second = second->next;
+      }
     }
 
     int size(){
       Node* temp = this->clone();
-    	int cnt = 0;
-    	while(temp != NULL){
-    		++cnt;
-    		temp = temp->next;
-    	}
-    	return cnt;
+      int cnt = 0;
+      while(temp != NULL){
+        ++cnt;
+    	temp = temp->next;
+      }
+    return cnt;
     }
 
     bool empty(){
@@ -62,14 +62,14 @@ class Node{
     }
 
     void insertL(int value){
-    	Node* temp = this->clone();
+      Node* temp = this->clone();
       this->data = value;
       this->next = temp;
     }
 
     void insertR(int value){
-    	Node* end = new Node(value);
-    	Node* temp = this;
+      Node* end = new Node(value);
+      Node* temp = this;
       while(temp->next != NULL){
         temp = temp->next;
       }
@@ -109,17 +109,17 @@ class Node{
       this->next = NULL;
       temp = temp->next;
       while(temp != NULL){
-		    this->insert(temp->data, direction);
-    		temp = temp->next;
-  	  }
+	this->insert(temp->data, direction);
+    	temp = temp->next;
+      }
     }
 
     static void display(Node* node){
       while(node != NULL){
-		    cout << node->data << " ";
-    		node = node->next;
-  	  }
-  	  cout << endl;
+	cout << node->data << " ";
+    	node = node->next;
+      }
+      cout << endl;
     }
 };
 
@@ -139,11 +139,6 @@ class Program{
       }
       cout << "Danh sach vua nhap theo thu tu tang dan: \n->> ";
       Node::display(list);
-    }
-
-    static void handTwo(Node* a, Node* b){
-      a->mergeAndSort(b);
-      a->sort();
     }
 
     static void Two(){
@@ -166,7 +161,7 @@ class Program{
         cin >> data;
         listB->insert(data, 1);
       }
-      handTwo(listA, listB);
+      listA->mergeAndSort(listB);
       cout << "Danh sach sau khi tron: \n->> ";
       Node::display(listA);
     }
@@ -201,8 +196,8 @@ class Program{
             a = true;
           }
         }
-    		list = list->next;
-  	  }
+    	list = list->next;
+      }
       cout << "Danh sach so chan: \n->> ";
       if(a){
         Node::display(listA);
@@ -220,11 +215,11 @@ class Program{
 };
 
 int main(){
- cout << "                   ---------- Bai 1 ---------" << endl;
- Program::One();
+  cout << "                   ---------- Bai 1 ---------" << endl;
+  Program::One();
   cout << "                   ---------- Bai 2 ---------" << endl;
   Program::Two();
   cout << "                   ---------- Bai 3 ---------" << endl;
   Program::Three();
-	return 0;
+  return 0;
 }
