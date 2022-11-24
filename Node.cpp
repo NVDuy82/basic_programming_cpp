@@ -43,8 +43,8 @@ class Node{
       int direction =  reverse ? -1 : 1;
       this->sort(reverse);
       while(second != NULL){
-	      this->insert(second->data, direction);
-      	second = second->next;
+	this->insert(second->data, direction);
+        second = second->next;
       }
     }
 
@@ -100,8 +100,8 @@ class Node{
       this->next = NULL;
       temp = temp->next;
       while(temp != NULL){
-	      this->insert(temp->data, direction);
-    	  temp = temp->next;
+        this->insert(temp->data, direction);
+        temp = temp->next;
       }
     }
 
