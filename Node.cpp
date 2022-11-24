@@ -111,6 +111,7 @@ class Node{
 class Program{
   private:
   public:
+    // Bai 1
     static void One(){
       int n, data;
       cout << "+ Nhap so luong so nguyen: ";
@@ -126,6 +127,7 @@ class Program{
       Node::display(list);
     }
 
+    // Bai 2
     static void Two(){
       int n, data;
       cout << "+ Nhap so luong so nguyen: ";
@@ -151,6 +153,7 @@ class Program{
       Node::display(listA);
     }
 
+    // Bai 3
     static void Three(){
       int n, data;
       cout << "+ Nhap so luong so nguyen: ";
