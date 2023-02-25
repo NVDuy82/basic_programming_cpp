@@ -13,7 +13,6 @@ int main() {
     int n;
     cin >> n;
     long long a[n];
-    long long b[n-1];
     int res = 0;
     
     for (int i = 0; i < n; ++i) {
