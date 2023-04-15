@@ -5,19 +5,19 @@
 using namespace std;
 
 template <typename T>
-struct node {
+struct point {
 private:
     T x, y;
 
 public:
-    node() {
+    point() {
         x = y = 0;
     }
 
-    node(T x, T y) : x(x), y(y) {}
+    point(T x, T y) : x(x), y(y) {}
 
-    friend istream & operator >> (istream & is, node & node) {
-        is >> node.x >> node.y;
+    friend istream & operator >> (istream & is, point & point) {
+        is >> point.x >> point.y;
         return is;
     }
 
@@ -25,23 +25,23 @@ public:
         return x;
     }
     void setX(T x) {
-        node::x = x;
+        point::x = x;
     }
     T getY() const {
         return y;
     }
     void setY(T y) {
-        node::y = y;
+        point::y = y;
     }
 
-    friend double distance(const node a, const node b) {
+    friend double distance(const point a, const point b) {
         T dx = a.x - b.x;
         T dy = a.y - b.y;
         return sqrt(dx*dx + dy*dy);
     }
 };
 
-double prims(node<double> * node, int n) {
+double prims(point<double> * point, int n) {
     double p[n], res = 0;
     for (int i = 1; i < n; ++i) {
         p[i] = numeric_limits<double>::infinity();
@@ -55,7 +55,7 @@ double prims(node<double> * node, int n) {
         min = numeric_limits<double>::infinity();
         for (int j = 1; j < n; ++j) {
             if (p[j] > 0) {
-                double d = distance(node[cur], node[j]);
+                double d = distance(point[cur], point[j]);
                 if (d < p[j]) {
                     p[j] = d;
                 }
@@ -80,12 +80,12 @@ int main() {
     while (t--) {
         int n;
         cin >> n;
-        node<double> node[n];
+        point<double> point[n];
         for (int i = 0; i < n; ++i) {
-            cin >> node[i];
+            cin >> point[i];
         }
 
-        printf("%0.6lf\n", prims(node, n));
+        printf("%0.6lf\n", prims(point, n));
     }
 
     return 0;
